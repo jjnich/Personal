@@ -1,0 +1,122 @@
+Write a function:
+
+def solution(A, B, K)
+
+that, given three integers A, B and K, returns the number of integers within the range [A..B] that are divisible by K, i.e.:
+
+{ i : A ≤ i ≤ B, i mod K = 0 }
+
+For example, for A = 6, B = 11 and K = 2, your function should return 3, because there are three numbers divisible by 2 within the range [6..11], namely 6, 8 and 10.
+
+Write an efficient algorithm for the following assumptions:
+
+A and B are integers within the range [0..2,000,000,000];
+K is an integer within the range [1..2,000,000,000];
+A ≤ B.
+
+def solution(A, B, K):
+    tot = 0
+    for l in range(K):
+        if (A+l) % K == 0 and A+l <= B:
+            for i in range(A+l,B,K):
+                tot += 1
+    return tot
+    pass
+
+def solution(A, B, K):
+    tot = 0
+    start = 0
+    if A == B:
+        if A == K: return 1
+        else: return 0
+    if K > B: return 0
+    if A % K == 0:
+        for i in range(A,B+1,K):
+                tot += 1
+    else:
+        for count in range(A,A+K):
+            if count % K == 0:
+                start = count
+                break
+        if start == 0: return 0
+        else:
+            for i in range(start,B+1,K):
+                tot += 1
+    return tot
+    pass
+
+
+A = 100, B=123M+, K=2
+if k = 1
+
+def solution(A, B, K):
+    tot = 0
+    start = 0
+    if A == B:
+        if A % K == 0: return 1
+        else: return 0
+    if K > B: return 0
+    if A % K == 0:
+        for i in range(A,B+1,K):
+                tot += 1
+    else:
+        for count in range(A,A+K):
+            if count % K == 0:
+                start = count
+                break
+        if start == 0: return 0
+        else:
+            for i in range(start,B+1,K):
+                tot += 1
+    return tot
+    pass
+
+def solution(A, B, K):
+    tot = 0
+    start = 0
+    if A == B:
+        if A % K == 0: return 1
+        else: return 0
+    if K > B: return 0
+    # if K == 1: return 1 + B - A
+    # if K == 2: return int(((B - A) / 2) + 1)
+    return int(((B-A)/K)+1)
+    # if A % K == 0:
+    #     for i in range(A,B+1,K):
+    #             tot += 1
+    # else:
+    #     for count in range(A,A+K):
+    #         if count % K == 0:
+    #             start = count
+    #             break
+    #     if start == 0: return 0
+    #     else:
+    #         for i in range(start,B+1,K):
+    #             tot += 1
+    # return tot
+    pass
+
+
+failed on - A = 101, B = 123M+, K = 10K (got 12346 expected 12345)
+failed on - extreme endpoints (got 2 expected 1)
+def solution(A, B, K):
+    if A == B:
+        if A % K == 0: return 1
+        else: return 0
+    if K > B: return 0
+    return int(((B-A)/K)+1)
+    pass
+
+
+failed - [0,MAXINT,{1,MAXINT}] - got 1 less than expected (got 1 expected 2)
+import math
+
+def solution(A, B, K):
+    if A == B:
+        if A % K == 0: return 1
+        else: return 0
+    if K > B: return 0
+    tot = math.trunc((B-A)/K)
+    if K / 2 <= A: tot +=1
+    return tot
+    pass
